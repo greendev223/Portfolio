@@ -24,43 +24,47 @@ class Home extends React.Component<Props, ContactState> {
   
   componentDidMount(){        
     let container:any, clock:any;
-    let camera:any, scene:any, renderer:any, model:any;
+    let camera:any, scene:any, renderer:any, controls:any;
 
     init();
     animate();
 
-    function init() {
+    async function init() {
       //=========== scene, camera, renderer ===========
       container = document.getElementById( 'canvas-container' );
       scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.01, 3000 ); 
+      camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 12000 ); 
       camera.position.y=10
       camera.position.z=20
       renderer = new THREE.WebGLRenderer();
       renderer.setPixelRatio( window.devicePixelRatio );
       renderer.setClearColor(0x000000);
       renderer.setSize( window.innerWidth, window.innerHeight );
-      const controls = new OrbitControls( camera, renderer.domElement );
-			controls.update();
-			controls.enablePan = false;
-			controls.enableDamping = true;
+      controls = new OrbitControls( camera, renderer.domElement );
+      // controls.keys = { LEFT: 'ArrowLeft', UP: 'ArrowUp', RIGHT: 'ArrowRight', BOTTOM: 'ArrowDown' }
+      // controls.maxPolarAngle = 0.9 * Math.PI / 2;
+      controls.maxDistance = 400;
+      controls.minDistance = 10;
+      controls.autoRotate = true;
+      controls.autoRotateSpeed = 0.5;
+      controls.update();
       container.appendChild( renderer.domElement );
       window.addEventListener( 'resize', onWindowResize );
       //=========== lights ===========
-      const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
-      scene.add( ambientLight );
-      const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.8 );
-      directionalLight.position.set( 1, 1, 0 ).normalize();
-      scene.add( directionalLight );
+      // const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
+      // scene.add( ambientLight );
+      // const light = new THREE.PointLight( 0xffffff, 0.1, 100 );
+      // light.position.set( 0, 50, 0 );
+      // scene.add( light );      
+      const light = new THREE.DirectionalLight( 0xaabbff, 0.3 );
+      light.position.x = 0;
+      light.position.y = 150;
+      light.position.z = 0;
+      scene.add( light );
       
-      // clock = new THREE.Clock();      
-      const geometry1 = new THREE.BoxGeometry( 1, 1, 1 );
-      const material1 = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
-      const cube1 = new THREE.Mesh( geometry1, material1 );
-      cube1.position.set(0,0,0)
-      scene.add( cube1 );
+      // clock = new THREE.Clock(); 
 
-      const geometry = new THREE.BoxGeometry(2000, 2000, 2000);     
+      const geometry = new THREE.BoxGeometry(1000, 1000, 1000);     
       
       const loadManager = new THREE.LoadingManager();
       const loader = new THREE.TextureLoader(loadManager);
@@ -74,12 +78,23 @@ class Home extends React.Component<Props, ContactState> {
         new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: loader.load('assets/img/landing-page/nz.jpg')}),
       ];
       loadManager.onLoad = () => {
-        // loadingElem.style.display = 'none';
         const cube = new THREE.Mesh(geometry, materials);
         scene.add(cube);
-        // cubes.push(cube);  // add to our list of cubes to rotate
       };
-      
+      const v4loader = new THREE.ObjectLoader();
+      // const object1 = await v4loader.loadAsync( "assets/models/v4/scene.json" );
+      // scene.add( object1 );
+      v4loader.load(
+        "assets/models/v4/scene.json",
+        function ( obj ) {obj.scale.set(0.3,0.3,0.3); obj.position.set(0,-5,0);scene.add( obj );
+        },
+        function ( xhr ) {console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );},
+        function ( err ) {console.error( 'An error happened' );}
+      );
+
+      // const object = v4loader.parse( a_json_object );
+      // var object = v4loader.parse(a_json_object)
+      // scene.add( object );      
       loadManager.onProgress = (urlOfLastItemLoaded, itemsLoaded, itemsTotal) => {
         const progress = itemsLoaded / itemsTotal;
         // progressBarElem.style.transform = `scaleX(${progress})`;
@@ -94,7 +109,8 @@ class Home extends React.Component<Props, ContactState> {
       renderer.setSize( window.innerWidth, window.innerHeight );
     }
 
-    function animate() {
+    function animate() {      
+			controls.update();
       requestAnimationFrame( animate );
       render();      
     }
@@ -131,4 +147,4 @@ class Home extends React.Component<Props, ContactState> {
   }
 }
 
-export default Home
+export default Home;
