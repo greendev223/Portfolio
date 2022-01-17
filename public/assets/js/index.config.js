@@ -1425,7 +1425,7 @@
         var geometry, i, j, material, numParticles, orbitSizes, orbitSpeeds, particles, posIndex, positions, pulseSpeeds, ref, sprite1, textureLoader;
         textureLoader = new THREE.TextureLoader();
         sprite1 = textureLoader.load("assets/models/particle1.jpg");
-        numParticles = 1000;
+        numParticles = 2000;
         geometry = new THREE.BufferGeometry();
         positions = new Float32Array(numParticles * 3);
         pulseSpeeds = new Float32Array(numParticles);
