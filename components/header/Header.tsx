@@ -1,70 +1,63 @@
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+import { FaBars } from "react-icons/fa";
+import Image from 'next/image';
+import Menu from '../Menu';
+
+const customStyles = {
+  content: {
+    top: '20px',
+    right: '20px',
+    left: 'auto',
+    bottom: 'auto',
+    // transform: 'translate(-50%, -50%)',
+  },
+};
 
 const Header = () => {
-  
-  const [scrolled, setScrolled] = useState(false)
-  const handleScroll = () => {
-    const offset = window.scrollY
-    setScrolled((offset>70)?true:false);
-  }    
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-  })
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [menubtn, setMenuBTN] = React.useState('block');
 
-  // const navbarClasses = (scrolled)?'navbar-header sticky relative':'navbar-header relative';
+  function openModal() {
+    setIsOpen(true);
+    setMenuBTN('none')
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    setMenuBTN('block')
+  }
   return (
+    <>
     <div 
-      // className={navbarClasses}
-      className='flex justify-center items-center h-16 border-b border-white border-dashed'
+      className='absolute top-0 z-10flex justify-between items-center h-[70px] w-full mt-4 px-4'
     >
-      <div className="navbar-nav w-full h-full flex justify-around items-center text-white ">
-        <Link href="#here">
-          <a className="nav-item nav-link active">
-            <div className="flex justify-center items-center hover:cursor-pointer">              
-              <div className="hidden md:block text-xl">Home</div>
-            </div>
+      <div className="navbar-nav w-full h-full flex justify-between items-center text-white md:px-4">
+        <Link href="/">
+          <a className="nav-item nav-link flex items-center hover:cursor-pointer">
+            <Image src={'/assets/img/portfolio1.png'} width={250} height={50}/>
           </a>
         </Link>
 
-        <Link href="#about">
-          <a className="nav-item nav-link">
-            <div className="flex justify-center items-center hover:cursor-pointer">
-              
-              <div className="hidden md:block text-xl">About</div>
-            </div>
+        <Link href="#">
+          <a className="nav-item nav-link text-28 hover:cursor-pointer" style={{display:menubtn}} onClick={openModal}>
+              <FaBars/>
           </a>
         </Link>
-                
-        <Link href="#portfolio">
-          <a className="nav-item nav-link">
-          <div className="flex justify-center items-center hover:cursor-pointer">
-            
-            <div className="hidden md:block text-xl">Portfolio</div>
-          </div>
-          </a>
-        </Link>
-
-        <Link href="#skill">
-          <a className="nav-item nav-link">
-            <div className="flex justify-center items-center hover:cursor-pointer">
-              
-              <div className="hidden md:block text-xl">Skills Service</div>
-            </div>
-          </a>
-        </Link>
-
-        <Link href="#contact">
-          <a className="nav-item nav-link">
-            <div className="flex justify-center items-center hover:cursor-pointer">
-              
-              <div className="hidden md:block text-xl">Contact</div>
-            </div>
-          </a>
-        </Link>
-
       </div>
     </div>
+    <Modal
+        isOpen={modalIsOpen}
+        // onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >        
+        <Menu/>
+      </Modal>
+    </>
   )
 }
 

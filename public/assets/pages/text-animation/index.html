@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - THREE Text Animation #5</title>
+  <title>Text 3D Animation</title>
 	<style>
 		body {
 			margin: 0;
@@ -20,12 +20,12 @@
 <body>
 <!-- partial:index.partial.html -->
 <script>
-	THREE.ShapeUtils.triangulateShape = (function () {
-	        var pnlTriangulator = new PNLTRI.Triangulator();
-	        return function triangulateShape(contour, holes) {
-	            return pnlTriangulator.triangulate_polygon([contour].concat(holes));
-	        };
-	    })();
+	// THREE.ShapeUtils.triangulateShape = (function () {
+	//         var pnlTriangulator = new PNLTRI.Triangulator();
+	//         return function triangulateShape(contour, holes) {
+	//             return pnlTriangulator.triangulate_polygon([contour].concat(holes));
+	//         };
+	//     })();
 </script>
 
 <div id="three-container"></div>

@@ -34,7 +34,7 @@ function init() {
 }
 
 function createTextAnimation() {
-  var geometry = generateTextGeometry('Andrey Ershov', {
+  var geometry = generateTextGeometry("Creative Developer", {
     size:40,
     height:12,
     font:'droid sans',
@@ -141,6 +141,7 @@ function TextAnimation(textGeometry) {
       shading: THREE.FlatShading,
       side: THREE.DoubleSide,
       transparent: true,
+      alphaMap:0x0,
       uniforms: {
         uTime: {type: 'f', value: 0}
       },
@@ -173,9 +174,11 @@ function TextAnimation(textGeometry) {
       ]
     },
     {
-      diffuse: 0x4444ff,
-      specular: 0x3333ff,
-      shininess: 0
+      diffuse: 0x00BFFF,
+      specular: 0x1E90FF,
+      shininess: 30,
+      metalness : 0,
+      alphaMap:0.2
       //emissive:0xffffff
     }
   );
