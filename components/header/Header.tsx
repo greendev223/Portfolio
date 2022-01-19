@@ -32,23 +32,24 @@ const Header = () => {
   return (
     <>
     <div 
-      className='absolute top-0 z-10flex justify-between items-center h-[70px] w-full mt-4 px-4'
+      className='absolute top-0 z-10flex justify-between items-center h-[70px] w-full md:mt-4 px-4'
     >
       <div className="navbar-nav w-full h-full flex justify-between items-center text-white md:px-4">
         <Link href="/">
           <a className="nav-item nav-link flex items-center hover:cursor-pointer">
-            <Image src={'/assets/img/portfolio1.png'} width={250} height={50}/>
+            <div className='hidden md:block'><Image src={'/assets/img/portfolio1.png'} width={250} height={50}/></div>
+            <div className='md:hidden'><Image src={'/assets/img/portfolio1.png'} width={150} height={33}/></div>
           </a>
         </Link>
 
         <Link href="#">
-          <a className="nav-item nav-link text-28 hover:cursor-pointer" style={{display:menubtn}} onClick={openModal}>
+          <a className="nav-item nav-link text-lg md:text-28 hover:cursor-pointer" style={{display:menubtn}} onClick={openModal}>
               <FaBars/>
           </a>
         </Link>
       </div>
     </div>
-    <Modal
+      <Modal
         isOpen={modalIsOpen}
         // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}

@@ -2,155 +2,127 @@ import React from 'react';
 import Head from 'next/head'
 import * as THREE from "three";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
-// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-
-// import Image from 'next/image'
-// import Link from 'next/link';
-import Script from 'next/script';
-
 import Header from '../components/header/Header';
-// import Footer from '../components/footer/Footer';
 
-type Props = {  
-}
-
-type ContactState = {
-}
-
-class Home extends React.Component<Props, ContactState> { 
-  // constructor(props:Props) {
-  //   super(props)
-  // }
-  // state: ContactState = {};  
-  
-  componentDidMount(){        
-    let container:any, clock:any = new THREE.Clock();    
-    let camera:any, scene:any, renderer:any, controls:any;
-    let particles_model: THREE.Points<THREE.BufferGeometry, any>;
-    let mixer: THREE.AnimationMixer;
-
-    init();
-    animate();
+class Home extends React.Component<{}, {}> {   
+  componentDidMount(){
     
-    function particles() {
-      var geometry, i, j, material:any, numParticles, orbitSizes, orbitSpeeds, particles, posIndex, positions, pulseSpeeds, ref, sprite1, textureLoader;
-      textureLoader = new THREE.TextureLoader();
-      sprite1 = textureLoader.load("assets/models/particle1.jpg");
-      numParticles = 2000;
-      geometry = new THREE.BufferGeometry();
-      positions = new Float32Array(numParticles * 3);
-      pulseSpeeds = new Float32Array(numParticles);
-      orbitSizes = new Float32Array(numParticles);
-      orbitSpeeds = new Float32Array(numParticles);
-      for (i = j = 0, ref = numParticles; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
-        posIndex = i * 3;
-        positions[posIndex] = Math.random() * 300 - 150;
-        positions[posIndex + 1] = Math.random() * 300 - 150;
-        positions[posIndex + 2] = Math.random() * 300 - 150;
-        pulseSpeeds[i] = 1 + (Math.random() * 2);
-        orbitSizes[i] = 1 + (Math.random() * 2);
-        orbitSpeeds[i] = -2 + (Math.random() * 4);
-      }
-      geometry.addAttribute('position', new THREE.BufferAttribute(positions, 3));
-      geometry.addAttribute('pulseSpeed', new THREE.BufferAttribute(pulseSpeeds, 1));
-      geometry.addAttribute('orbitSize', new THREE.BufferAttribute(orbitSizes, 1));
-      geometry.addAttribute('orbitSpeed', new THREE.BufferAttribute(orbitSpeeds, 1));
-      material = new THREE.ShaderMaterial({
-        uniforms: THREE.UniformsUtils.clone({
-          map: { type: "t", value: null },
-          offsetRepeat: { type: "v4", value: new THREE.Vector4(0, 0, 1, 1) },
-          time: { type: "f", value: 0 }, 
-          color: { type: "c", value: new THREE.Color(0xdddddd) },
-          size: { type: "f", value: .9 },
-          scale: { type: "f", value: 500 }
-        }),
-        vertexShader: "uniform float time; uniform float size; uniform float scale; attribute float pulseSpeed; attribute float orbitSpeed; attribute float orbitSize; void main() { vec3 animatedPosition = position; animatedPosition.x += sin(time * orbitSpeed) * orbitSize; animatedPosition.y += cos(time * orbitSpeed) * orbitSize; animatedPosition.z += cos(time * orbitSpeed) * orbitSize; vec3 transformed = vec3( animatedPosition ); vec4 mvPosition = modelViewMatrix * vec4( transformed, 1.0 ); gl_Position =  projectionMatrix * mvPosition; float animatedSize = size * ( scale / - mvPosition.z ); animatedSize *= 1.0 + sin(time * pulseSpeed); gl_PointSize = animatedSize; }",
-        fragmentShader: "uniform sampler2D map; uniform vec4 offsetRepeat; uniform vec3 color; void main() { gl_FragColor = texture2D( map, vec2( gl_PointCoord.x, 1.0 - gl_PointCoord.y ) * offsetRepeat.zw + offsetRepeat.xy ); gl_FragColor.rgb *= color.rgb; }",
-        blending: THREE.AdditiveBlending,
-        transparent: true
-      });
-      material.uniforms.map.value = sprite1;
-      material.uniforms.size.value = 0.4;
-      particles_model = new THREE.Points(geometry, material);
-      scene.add(particles_model);
-      scene.children.pop();
-      scene.children.unshift(particles_model);
-    };
-    async function init() {
-      //=========== scene, camera, renderer ===========
-      container = document.getElementById( 'canvas-container' );
-      scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 1000 ); 
-      camera.position.y=-20
-      camera.position.z=100
-      renderer = new THREE.WebGLRenderer();
-      renderer.setPixelRatio( window.devicePixelRatio );
-      renderer.setClearColor(0x000000);
-      renderer.setSize( window.innerWidth, window.innerHeight );
-      controls = new OrbitControls( camera, renderer.domElement );
-      controls.maxDistance = 300;
-      controls.minDistance = 10;
-      controls.autoRotate = true;
-      controls.autoRotateSpeed = -0.5;
-      controls.update();
-      container.appendChild( renderer.domElement );
-      window.addEventListener( 'resize', onWindowResize );
-      //=========== lights ===========
-      // const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
-      // scene.add( ambientLight );     
-      const light = new THREE.DirectionalLight( 0xaabbff, 0.4 );
-      light.position.x = 0;
-      light.position.y = 150;
-      light.position.z = 0;
-      scene.add( light );
+    let scene: THREE.Scene, camera: THREE.PerspectiveCamera, renderer: THREE.WebGLRenderer;
+    let ribbon: any;
+    let container: any;
 
-      const geometry = new THREE.BoxGeometry(800, 800, 800);     
-      
-      const loadManager = new THREE.LoadingManager();
-      const loader = new THREE.TextureLoader(loadManager);
+    const init = () => {
 
-      const materials = [
-        new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: loader.load('assets/img/landing-page/px.jpg')}),
-        new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: loader.load('assets/img/landing-page/nx.jpg')}),
-        new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: loader.load('assets/img/landing-page/py.jpg')}),
-        new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: loader.load('assets/img/landing-page/ny.jpg')}),
-        new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: loader.load('assets/img/landing-page/pz.jpg')}),
-        new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: loader.load('assets/img/landing-page/nz.jpg')}),
-      ];
-      loadManager.onLoad = () => {
-        const cube = new THREE.Mesh(geometry, materials);
-        scene.add(cube);
-      };     
-      loadManager.onProgress = (urlOfLastItemLoaded, itemsLoaded, itemsTotal) => {
-        const progress = itemsLoaded / itemsTotal;
-        // progressBarElem.style.transform = `scaleX(${progress})`;
-        console.log(progress)
-      };
+      scene = new THREE.Scene()
+      camera = new THREE.PerspectiveCamera( 75, 1, 0.1, 10000 )
+      camera.position.z = 2
 
-      particles();
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+      container = document.getElementById('service-canvas-container')
+      container.appendChild( renderer.domElement )
+
+
+      ribbon = new THREE.Mesh(
+        new THREE.PlaneGeometry( 5, 5, 128, 128 ),
+        new THREE.ShaderMaterial({
+          uniforms: {
+            time: { value: 0 },
+          },
+          vertexShader: `
+            varying vec3 vEC;
+            uniform float time;
+
+            float iqhash(float n) {
+              return fract(sin(n) * 43758.5453);
+            }
+
+            float noise(vec3 x) {
+              vec3 p = floor(x);
+              vec3 f = fract(x);
+              f = f * f * (3.0 - 2.0 * f);
+              float n = p.x + p.y * 157.0 + 113.0 * p.z;
+              return mix(mix(mix(iqhash(n), iqhash(n + 1.0), f.x),
+                        mix(iqhash(n + 57.0), iqhash(n + 58.0), f.x), f.y),
+                        mix(mix(iqhash(n + 113.0), iqhash(n + 114.0), f.x),
+                        mix(iqhash(n + 170.0), iqhash(n + 171.0), f.x), f.y), f.z);
+            }
+
+            float xmb_noise2(vec3 x) {
+              return cos(x.z * 5.0) * cos(x.z + time / 10.0 + x.x);
+            }
+
+            void main() {
+              vec4 pos = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+              vec3 v = vec3(pos.x, 0.0, pos.y);
+              vec3 v2 = v;
+              vec3 v3 = v;
+              
+              v.y = xmb_noise2(v2) / 8.0;
+
+              v3.x -= time / 5.0;
+              v3.x /= 4.0;
+
+              v3.z -= time / 10.0;
+              v3.y -= time / 100.0;
+
+              v.z -= noise(v3 * 7.0) / 15.0;
+              v.y -= noise(v3 * 7.0) / 15.0 + cos(v.x * 2.0 - time / 2.0) / 5.0 - 0.3;
+
+              vEC = v;
+              gl_Position = vec4(v, 1.0);
+            }
+          `,
+          fragmentShader: `
+            uniform float time;
+            varying vec3 vEC;
+
+            void main()
+            {
+              const vec3 up = vec3(0.0, 0.0, 1.0);
+              vec3 x = dFdx(vEC);
+              vec3 y = dFdy(vEC);
+              vec3 normal = normalize(cross(x, y));
+              float c = 1.0 - dot(normal, up);
+              c = (1.0 - cos(c * c)) / 3.0;
+              gl_FragColor = vec4(1.0, 1.0, 1.0, c * 1.5);
+            }
+          `,
+          extensions: {
+            derivatives: true,
+            fragDepth: false,
+            drawBuffers: false,
+            shaderTextureLOD: false
+          },
+          side: THREE.DoubleSide,
+          transparent: true,
+          depthTest: false,
+        })
+      )
+      scene.add( ribbon )
+      resize()
+      window.addEventListener( 'resize', resize )
 
     }
 
-    function onWindowResize() {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize( window.innerWidth, window.innerHeight );
+
+    const resize = () => {
+      const { offsetWidth, offsetHeight } = container
+      renderer.setSize( offsetWidth, offsetHeight )
+      renderer.setPixelRatio( devicePixelRatio )
+      camera.aspect = offsetWidth / offsetHeight
+      camera.updateProjectionMatrix()
+      ribbon.scale.set( camera.aspect * 1.55, 0.75, 1 )
     }
 
-    function animate() {      
-			controls.update();      
-      requestAnimationFrame( animate );
-      render();      
+    const animate = () => {
+      ribbon.material.uniforms.time.value += 0.01
+      renderer.render( scene, camera )
+      requestAnimationFrame( () => animate() )
     }
 
-    function render() {
-      const delta = clock.getDelta();
-      particles_model.material.uniforms.time.value += delta;
-      if ( mixer ) mixer.update( delta );
-      renderer.render( scene, camera );
-    }
+    init()
+    animate()
   }
-
 
   render(){
     return (
@@ -161,9 +133,28 @@ class Home extends React.Component<Props, ContactState> {
           <link rel="icon" href="/favicon.png" />
         </Head>
         <main className='flex items-center justify-center w-[100vw] h-[100vh] absolute top-0 left-0'>          
-          
+          <div className=" text-sm md:text-22 text-gray-600 font-medium px-6">
+            <div className='h-12 md:hidden'></div>
+            <div className="text-26 md:text-36 pb-4 md:mb-4 w-full text-center font-semibold">Technical Service</div>
+            <div className="flex mb-1">✅<div className="pl-1">Pixel-Perfect and Mobile Responsive Design Expertise</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">Expertise of Mobile App UI</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">Expertise in HTML, HTML5, CSS, SCSS</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">Expertise of JavaScript, TypeScript</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">Expertise in jQuery and Ajax</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">Expertise of JavaScript UI Frameworks such as React, Redux, Next.js, Vue.js, Nuxt.js</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">Expertise of Tailwind CSS framework</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">Expertise of UI libraries such as Material-UI, Ant-Design</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">Expertise of Web 3D Design with WebGL, Three.js</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">Expertise in Various Charts</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">GIT Version Control System Expertise</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">Expertise of Backend and RESTful API with Node, Python</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">Expertise in QA testing</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">Understanding of software development best practices</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">Implement Agile method in development</div></div>
+            <div className="flex mb-1">✅<div className="pl-1">Communication skill with fluent English</div></div>      
+          </div>
         </main>
-        <div id='canvas-container' className='absolute w-full h-full top-0 left-0' style={{zIndex:'-100'}}></div>        
+        <div id='service-canvas-container'></div>        
         <Header />
       </>
     );

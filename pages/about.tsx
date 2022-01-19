@@ -1,15 +1,13 @@
 import React from 'react';
 import Head from 'next/head'
 import * as THREE from "three";
-import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
-// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+// import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 
 // import Image from 'next/image'
 // import Link from 'next/link';
-import Script from 'next/script';
+// import Script from 'next/script';
 
 import Header from '../components/header/Header';
-// import Footer from '../components/footer/Footer';
 
 type Props = {  
 }
@@ -17,140 +15,77 @@ type Props = {
 type ContactState = {
 }
 
-class Home extends React.Component<Props, ContactState> { 
+class About extends React.Component<Props, ContactState> { 
   // constructor(props:Props) {
   //   super(props)
   // }
   // state: ContactState = {};  
   
-  componentDidMount(){        
-    let container:any, clock:any = new THREE.Clock();    
-    let camera:any, scene:any, renderer:any, controls:any;
-    let particles_model: THREE.Points<THREE.BufferGeometry, any>;
-    let mixer: THREE.AnimationMixer;
+  componentDidMount(){
+    let container:any;    
+    let scene = new THREE.Scene();
+    let camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 1000);
 
-    init();
-    animate();
+    // let envMapURLs = ['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg'];
+    let envMapURLs = ['night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg'];    
     
-    function particles() {
-      var geometry, i, j, material:any, numParticles, orbitSizes, orbitSpeeds, particles, posIndex, positions, pulseSpeeds, ref, sprite1, textureLoader;
-      textureLoader = new THREE.TextureLoader();
-      sprite1 = textureLoader.load("assets/models/particle1.jpg");
-      numParticles = 2000;
-      geometry = new THREE.BufferGeometry();
-      positions = new Float32Array(numParticles * 3);
-      pulseSpeeds = new Float32Array(numParticles);
-      orbitSizes = new Float32Array(numParticles);
-      orbitSpeeds = new Float32Array(numParticles);
-      for (i = j = 0, ref = numParticles; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
-        posIndex = i * 3;
-        positions[posIndex] = Math.random() * 300 - 150;
-        positions[posIndex + 1] = Math.random() * 300 - 150;
-        positions[posIndex + 2] = Math.random() * 300 - 150;
-        pulseSpeeds[i] = 1 + (Math.random() * 2);
-        orbitSizes[i] = 1 + (Math.random() * 2);
-        orbitSpeeds[i] = -2 + (Math.random() * 4);
-      }
-      geometry.addAttribute('position', new THREE.BufferAttribute(positions, 3));
-      geometry.addAttribute('pulseSpeed', new THREE.BufferAttribute(pulseSpeeds, 1));
-      geometry.addAttribute('orbitSize', new THREE.BufferAttribute(orbitSizes, 1));
-      geometry.addAttribute('orbitSpeed', new THREE.BufferAttribute(orbitSpeeds, 1));
-      material = new THREE.ShaderMaterial({
-        uniforms: THREE.UniformsUtils.clone({
-          map: { type: "t", value: null },
-          offsetRepeat: { type: "v4", value: new THREE.Vector4(0, 0, 1, 1) },
-          time: { type: "f", value: 0 }, 
-          color: { type: "c", value: new THREE.Color(0xdddddd) },
-          size: { type: "f", value: .9 },
-          scale: { type: "f", value: 500 }
-        }),
-        vertexShader: "uniform float time; uniform float size; uniform float scale; attribute float pulseSpeed; attribute float orbitSpeed; attribute float orbitSize; void main() { vec3 animatedPosition = position; animatedPosition.x += sin(time * orbitSpeed) * orbitSize; animatedPosition.y += cos(time * orbitSpeed) * orbitSize; animatedPosition.z += cos(time * orbitSpeed) * orbitSize; vec3 transformed = vec3( animatedPosition ); vec4 mvPosition = modelViewMatrix * vec4( transformed, 1.0 ); gl_Position =  projectionMatrix * mvPosition; float animatedSize = size * ( scale / - mvPosition.z ); animatedSize *= 1.0 + sin(time * pulseSpeed); gl_PointSize = animatedSize; }",
-        fragmentShader: "uniform sampler2D map; uniform vec4 offsetRepeat; uniform vec3 color; void main() { gl_FragColor = texture2D( map, vec2( gl_PointCoord.x, 1.0 - gl_PointCoord.y ) * offsetRepeat.zw + offsetRepeat.xy ); gl_FragColor.rgb *= color.rgb; }",
-        blending: THREE.AdditiveBlending,
-        transparent: true
+    let reflectionCube = new THREE.CubeTextureLoader().
+    setCrossOrigin('').
+    setPath('assets/img/landing-page/').
+    load(envMapURLs);
+    reflectionCube.format = THREE.RGBFormat;
+    reflectionCube.mapping = THREE.CubeRefractionMapping;
+
+    let renderer = new THREE.WebGLRenderer({ antialias: true });
+    let middle = new THREE.Vector3();
+
+    renderer.setClearColor(0x000000);
+    renderer.setSize(innerWidth, innerHeight);
+    container = document.getElementById( 'about-canvas-container' );
+    container.appendChild(renderer.domElement);
+    // const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+    scene.background = reflectionCube;
+
+    let light = new THREE.PointLight(0xffffff, 1, 0);
+    light.position.set(100, 200, 100);
+    scene.add(light);
+
+    let geometry = new THREE.BoxGeometry(5, 5, 0.04);
+    let material = new THREE.MeshStandardMaterial({ color: 0x777777, roughness: 0.08, metalness: 0.8, envMap: reflectionCube });
+
+    let cubes: THREE.Mesh<THREE.BoxGeometry, THREE.MeshStandardMaterial>[] = [];
+    let cubeCount = 300;
+    for (let i = 0; i < cubeCount; i++) {
+      let cube = new THREE.Mesh(geometry, material);
+      // let t = i / cubeCount * Math.PI * 2;
+      // cube.t = t;
+      cube.rotation.set(0, 0, i*0.003);
+      scene.add(cube);
+      cubes.push(cube);
+    }
+
+    function draw() {
+      requestAnimationFrame(draw);
+      let time = Date.now() * 0.005;
+      cubes.forEach((cube, index) => {
+        cube.rotation.z -= 0.007;
+        cube.position.set(0, 0, -7 + index*0.04 );    
       });
-      material.uniforms.map.value = sprite1;
-      material.uniforms.size.value = 0.4;
-      particles_model = new THREE.Points(geometry, material);
-      scene.add(particles_model);
-      scene.children.pop();
-      scene.children.unshift(particles_model);
-    };
-    async function init() {
-      //=========== scene, camera, renderer ===========
-      container = document.getElementById( 'canvas-container' );
-      scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 1000 ); 
-      camera.position.y=-20
-      camera.position.z=100
-      renderer = new THREE.WebGLRenderer();
-      renderer.setPixelRatio( window.devicePixelRatio );
-      renderer.setClearColor(0x000000);
-      renderer.setSize( window.innerWidth, window.innerHeight );
-      controls = new OrbitControls( camera, renderer.domElement );
-      controls.maxDistance = 300;
-      controls.minDistance = 10;
-      controls.autoRotate = true;
-      controls.autoRotateSpeed = -0.5;
-      controls.update();
-      container.appendChild( renderer.domElement );
-      window.addEventListener( 'resize', onWindowResize );
-      //=========== lights ===========
-      // const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
-      // scene.add( ambientLight );     
-      const light = new THREE.DirectionalLight( 0xaabbff, 0.4 );
-      light.position.x = 0;
-      light.position.y = 150;
-      light.position.z = 0;
-      scene.add( light );
-
-      const geometry = new THREE.BoxGeometry(800, 800, 800);     
       
-      const loadManager = new THREE.LoadingManager();
-      const loader = new THREE.TextureLoader(loadManager);
-
-      const materials = [
-        new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: loader.load('assets/img/landing-page/px.jpg')}),
-        new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: loader.load('assets/img/landing-page/nx.jpg')}),
-        new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: loader.load('assets/img/landing-page/py.jpg')}),
-        new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: loader.load('assets/img/landing-page/ny.jpg')}),
-        new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: loader.load('assets/img/landing-page/pz.jpg')}),
-        new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: loader.load('assets/img/landing-page/nz.jpg')}),
-      ];
-      loadManager.onLoad = () => {
-        const cube = new THREE.Mesh(geometry, materials);
-        scene.add(cube);
-      };     
-      loadManager.onProgress = (urlOfLastItemLoaded, itemsLoaded, itemsTotal) => {
-        const progress = itemsLoaded / itemsTotal;
-        // progressBarElem.style.transform = `scaleX(${progress})`;
-        console.log(progress)
-      };
-
-      particles();
-
+      camera.position.set( -4, 0.5, 3);      
+      camera.lookAt(middle);
+      renderer.render(scene, camera);
     }
 
-    function onWindowResize() {
-      camera.aspect = window.innerWidth / window.innerHeight;
+    draw();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = innerWidth / innerHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize( window.innerWidth, window.innerHeight );
-    }
-
-    function animate() {      
-			controls.update();      
-      requestAnimationFrame( animate );
-      render();      
-    }
-
-    function render() {
-      const delta = clock.getDelta();
-      particles_model.material.uniforms.time.value += delta;
-      if ( mixer ) mixer.update( delta );
-      renderer.render( scene, camera );
-    }
+      renderer.setSize(innerWidth, innerHeight);
+    }, false);
   }
-
 
   render(){
     return (
@@ -160,14 +95,21 @@ class Home extends React.Component<Props, ContactState> {
           <meta name="description" content="Generated by create next app" />
           <link rel="icon" href="/favicon.png" />
         </Head>
-        <main className='flex items-center justify-center w-[100vw] h-[100vh] absolute top-0 left-0'>          
-          
+        <main className='flex items-center justify-center w-[100vw] h-[100vh] cursor-default absolute top-0 left-0 p-4'>
+          <div className='text-white text-20 md:text-36 font-medium md:p-28'>
+            &nbsp;&nbsp;I'm Andrey from Russia and have 10+ years of hands-on experience.<br/>
+            &nbsp;&nbsp;I got my Bachelor of Computer Science in 2011 and I've been working as a professional software developer since 2012. During that time, I learned and experienced related technologies and improved myself and accumulated strong skills and a wealth of experience in my skill field.<br/>
+            &nbsp;&nbsp;Have experience in Web and Mobiel UI from concept through deployment and worked on lots of small and large scale projects.<br/>
+            &nbsp;&nbsp;I am honest and hardworking and always like new technology and challenge.<br/>
+            &nbsp;&nbsp;I prefer to build trust and a long-term relationships.<br/>
+          </div>
         </main>
-        <div id='canvas-container' className='absolute w-full h-full top-0 left-0' style={{zIndex:'-100'}}></div>        
+        
+        <div id='about-canvas-container' className='absolute w-full h-full top-0 left-0' style={{zIndex:'-100'}}></div>
         <Header />
       </>
     );
   }
 }
 
-export default Home;
+export default About;

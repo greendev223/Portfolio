@@ -14,3 +14,20 @@ body {
   border: none !important;
   padding: 0 !important;
 }
+
+
+#service-canvas-container {
+  position: absolute;
+  max-width: 100vw !important;
+  width: 100vmax;
+  height: 100vmax;
+  max-height: 100vh;
+  left: 0;
+  top: 0;
+  background: linear-gradient(to bottom, #F5DEB3, #8ee6c8);
+  /* transform: translate3d(-50%, -40%, 0); */
+  z-index: -1;
+}
+#service-canvas-container > canvas{
+  max-width: 100vw !important;
+}

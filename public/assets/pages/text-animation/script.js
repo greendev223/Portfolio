@@ -174,8 +174,8 @@ function TextAnimation(textGeometry) {
       ]
     },
     {
-      diffuse: 0x00BFFF,
-      specular: 0x1E90FF,
+      diffuse: 0xFFD700,
+      specular: 0xDAA520,
       shininess: 30,
       metalness : 0,
       alphaMap:0.2
