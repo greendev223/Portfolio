@@ -15,6 +15,9 @@ body {
   padding: 0 !important;
 }
 
+#index-canvas-container{  
+  background: linear-gradient(to bottom, #272727, #0d79ac);
+}
 
 #service-canvas-container {
   position: absolute;

@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head'
 import * as THREE from "three";
-import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import Header from '../components/header/Header';
 
 class Home extends React.Component<{}, {}> {   
@@ -20,7 +19,6 @@ class Home extends React.Component<{}, {}> {
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
       container = document.getElementById('service-canvas-container')
       container.appendChild( renderer.domElement )
-
 
       ribbon = new THREE.Mesh(
         new THREE.PlaneGeometry( 5, 5, 128, 128 ),
@@ -101,9 +99,7 @@ class Home extends React.Component<{}, {}> {
       scene.add( ribbon )
       resize()
       window.addEventListener( 'resize', resize )
-
     }
-
 
     const resize = () => {
       const { offsetWidth, offsetHeight } = container

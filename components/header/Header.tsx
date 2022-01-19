@@ -37,8 +37,8 @@ const Header = () => {
       <div className="navbar-nav w-full h-full flex justify-between items-center text-white md:px-4">
         <Link href="/">
           <a className="nav-item nav-link flex items-center hover:cursor-pointer">
-            <div className='hidden md:block'><Image src={'/assets/img/portfolio1.png'} width={250} height={50}/></div>
-            <div className='md:hidden'><Image src={'/assets/img/portfolio1.png'} width={150} height={33}/></div>
+            <div className='hidden md:block'><Image src={'/assets/img/portfolio1.png'} alt='logo' width={250} height={50}/></div>
+            <div className='md:hidden'><Image src={'/assets/img/portfolio1.png'} alt='logo' width={150} height={33}/></div>
           </a>
         </Link>
 

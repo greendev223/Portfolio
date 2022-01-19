@@ -26,8 +26,8 @@ class About extends React.Component<Props, ContactState> {
     let scene = new THREE.Scene();
     let camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 1000);
 
-    // let envMapURLs = ['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg'];
-    let envMapURLs = ['night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg'];    
+    let envMapURLs = ['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg'];
+    // let envMapURLs = ['night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg'];    
     
     let reflectionCube = new THREE.CubeTextureLoader().
     setCrossOrigin('').
@@ -97,8 +97,8 @@ class About extends React.Component<Props, ContactState> {
         </Head>
         <main className='flex items-center justify-center w-[100vw] h-[100vh] cursor-default absolute top-0 left-0 p-4'>
           <div className='text-white text-20 md:text-36 font-medium md:p-28'>
-            &nbsp;&nbsp;I'm Andrey from Russia and have 10+ years of hands-on experience.<br/>
-            &nbsp;&nbsp;I got my Bachelor of Computer Science in 2011 and I've been working as a professional software developer since 2012. During that time, I learned and experienced related technologies and improved myself and accumulated strong skills and a wealth of experience in my skill field.<br/>
+            &nbsp;&nbsp;I&apos;m Andrey from Russia and have 10+ years of hands-on experience.<br/>
+            &nbsp;&nbsp;I got my Bachelor of Computer Science in 2011 and I&apos;ve been working as a professional software developer since 2012. During that time, I learned and experienced related technologies and improved myself and accumulated strong skills and a wealth of experience in my skill field.<br/>
             &nbsp;&nbsp;Have experience in Web and Mobiel UI from concept through deployment and worked on lots of small and large scale projects.<br/>
             &nbsp;&nbsp;I am honest and hardworking and always like new technology and challenge.<br/>
             &nbsp;&nbsp;I prefer to build trust and a long-term relationships.<br/>
