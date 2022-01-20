@@ -4,7 +4,6 @@ import Modal from 'react-modal';
 import { FaBars } from "react-icons/fa";
 import Image from 'next/image';
 import Menu from '../Menu';
-import Script from 'next/script';
 
 const customStyles = {
   content: {
