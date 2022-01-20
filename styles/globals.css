@@ -31,7 +31,7 @@ body {
   max-height: 100vh;
   left: 0;
   top: 0;
-  background: linear-gradient(to bottom, #F5DEB3, #8ee6c8);
+  background: linear-gradient(to bottom, #272727, #0d79ac);
   /* transform: translate3d(-50%, -40%, 0); */
   z-index: -1;
 }

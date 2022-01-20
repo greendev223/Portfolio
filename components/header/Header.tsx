@@ -61,7 +61,7 @@ const Header = () => {
             </Link>
             <Link href="/portfolio">
               <a className={deactiveClass}>
-                Past Work
+                Projects
               </a>
             </Link>
             <Link href="/service">

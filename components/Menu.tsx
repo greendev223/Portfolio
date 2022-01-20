@@ -3,6 +3,13 @@ const Menu = () => {
   return (
     <div className='p-4 text-white text-base rounded-l-sm' style={{backgroundColor:'rgba(33,33,55,0.8)'}}>
       <div className='text-right '>
+        <Link href="/">
+          <a className="hover:cursor-pointer">
+            Home
+          </a>
+        </Link>
+      </div>
+      <div className='text-right '>
         <Link href="/about">
           <a className="hover:cursor-pointer">
             About
@@ -12,14 +19,14 @@ const Menu = () => {
       <div className='text-right pt-1'>
         <Link href="/portfolio">
           <a className="hover:cursor-pointer">
-            Portfolio
+            Projects
           </a>
         </Link>
       </div>
       <div className='text-right pt-1'>
         <Link href="/service">
           <a className="hover:cursor-pointer">
-            Service
+            Support
           </a>
         </Link>
       </div>

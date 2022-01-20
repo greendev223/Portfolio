@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head'
 import * as THREE from "three";
-// import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 
 // import Image from 'next/image'
 // import Link from 'next/link';
@@ -25,7 +25,7 @@ class About extends React.Component<Props, ContactState> {
     let container:any;    
     let scene = new THREE.Scene();
     let camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 1000);
-
+    // camera.position.set(0,30,30)
     let envMapURLs = ['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg'];
     // let envMapURLs = ['night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg'];    
     
@@ -43,16 +43,24 @@ class About extends React.Component<Props, ContactState> {
     renderer.setSize(innerWidth, innerHeight);
     container = document.getElementById( 'about-canvas-container' );
     container.appendChild(renderer.domElement);
-    // const controls = new THREE.OrbitControls(camera, renderer.domElement);
-
+    // const controls = new OrbitControls(camera, renderer.domElement);
+    // controls.update()
     scene.background = reflectionCube;
 
-    let light = new THREE.PointLight(0xffffff, 1, 0);
-    light.position.set(100, 200, 100);
+    let light = new THREE.PointLight(0x8888aa, 1, 0);
+    light.position.set(100, 200, 200);
+    scene.add(light)
+
+    light = new THREE.PointLight(0x8888aa, 1, 0);
+    light.position.set(100, 200, -200);
+    scene.add(light);
+
+    light = new THREE.PointLight(0x8888aa, 1, 0);
+    light.position.set( -40, 50, 30);
     scene.add(light);
 
     let geometry = new THREE.BoxGeometry(5, 5, 0.04);
-    let material = new THREE.MeshStandardMaterial({ color: 0x777777, roughness: 0.08, metalness: 0.8, envMap: reflectionCube });
+    let material = new THREE.MeshStandardMaterial({ color: 0x9999aa, roughness: 0.5, metalness: 0.3, envMap: reflectionCube });
 
     let cubes: THREE.Mesh<THREE.BoxGeometry, THREE.MeshStandardMaterial>[] = [];
     let cubeCount = 300;

@@ -1,10 +1,15 @@
 import React from 'react';
 import Head from 'next/head'
-import * as THREE from "three";
+import Link from 'next/link';
 
-import Header from '../components/header/Header';
+import * as THREE from "three";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 
+import Header from '../components/header/Header';
+
+const sendEmail = () => {    
+  window.open("mailto:darkrut22@gmail.com?subject=Contact");
+};
 class Home extends React.Component<{},{}> { 
   
   componentDidMount(){
@@ -130,7 +135,6 @@ class Home extends React.Component<{},{}> {
     }
   }
 
-
   render(){
     return (
       <>
@@ -141,12 +145,28 @@ class Home extends React.Component<{},{}> {
         </Head>
         <main className='flex items-center justify-center w-[100vw] h-[100vh] absolute top-0 left-0'>          
           <div className='text-white text-base md:text-36 font-medium p-6'>
-            <div className='pb-20 text-lg md:text-45 text-center'>Contact Info</div>
+            <div className='pb-20 text-xl md:text-45 text-center'>Contact Info</div>
             <div className='hidden md:block w-full h-8'></div>
-            <div className='py-6'>Mail : darkrut22@gmail.com</div>
-            <div className='py-6'>Skype : https://join.skype.com/invite/xZi9LkzgQzuG</div>
-            <div className='py-6'>Github : https://github.com/perfectdev000</div>
-            <div className='py-6'>Discord : https://discord.gg/YgNKvera</div>
+            <Link href={'#'}>
+              <a className='hover:text-amber-500' onClick={()=>sendEmail()}>
+                <div className='py-6'>Mail : darkrut22@gmail.com</div>                
+              </a>
+            </Link>
+            <Link href={'https://join.skype.com/invite/xZi9LkzgQzuG'}>
+              <a target={'_blank'} className='hover:text-amber-500'>
+                <div className='py-6'>Skype : live:.cid.d5b65e4998f1a2b3</div>                
+              </a>
+            </Link>
+            <Link href={'https://github.com/perfectdev000'}>
+              <a target={'_blank'} className='hover:text-amber-500'>
+                <div className='py-6'>Github : https://github.com/perfectdev000</div>                
+              </a>
+            </Link>
+            <Link href={'https://discord.gg/YgNKvera'}>
+              <a target={'_blank'} className='hover:text-amber-500'>
+                <div className='py-6'>Discord : https://discord.gg/YgNKvera</div>                
+              </a>
+            </Link>
           </div>
         </main>
         <div id='contact-canvas-container' className='absolute w-[100vw] h-[100vh] top-0 left-0' style={{zIndex:'-100'}}></div>        

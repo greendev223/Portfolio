@@ -129,28 +129,23 @@ class Home extends React.Component<{}, {}> {
           <link rel="icon" href="/favicon.png" />
         </Head>
         <main className='flex items-center justify-center w-[100vw] h-[100vh] absolute top-0 left-0'>          
-          <div className=" text-sm md:text-22 text-gray-600 font-medium px-6">
+          <div className=" text-sm md:text-22 text-white font-medium px-6 cursor-default md:mt-8">
             <div className='h-12 md:hidden'></div>
-            <div className="text-26 md:text-36 pb-4 md:mb-4 w-full text-center font-semibold">Technical Service</div>
-            <div className="flex mb-1">✅<div className="pl-1">Pixel-Perfect and Mobile Responsive Design Expertise</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">Expertise of Mobile App UI</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">Expertise in HTML, HTML5, CSS, SCSS</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">Expertise of JavaScript, TypeScript</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">Expertise in jQuery and Ajax</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">Expertise of JavaScript UI Frameworks such as React, Redux, Next.js, Vue.js, Nuxt.js</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">Expertise of Tailwind CSS framework</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">Expertise of UI libraries such as Material-UI, Ant-Design</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">Expertise of Web 3D Design with WebGL, Three.js</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">Expertise in Various Charts</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">GIT Version Control System Expertise</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">Expertise of Backend and RESTful API with Node, Python</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">Expertise in QA testing</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">Understanding of software development best practices</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">Implement Agile method in development</div></div>
-            <div className="flex mb-1">✅<div className="pl-1">Communication skill with fluent English</div></div>      
+            <div className="text-26 md:text-36 pb-8 md:mb-8 w-full text-center font-semibold">Technical Support</div>
+            <div className='h-4 md:hidden'></div>
+            <div className="flex my-3 "><div className="">Pixel-Perfect/Mobile Responsive Web UI</div></div>
+            <div className="flex my-3 "><div className="">Mobile App UI</div></div>
+            <div className="flex my-3 "><div className="">HTML, HTML5, CSS, SCSS</div></div>
+            <div className="flex my-3 "><div className="">JavaScript, TypeScript, JQuery</div></div>
+            <div className="flex my-3 "><div className="">Canvas, SVG, WebGL, Three.js, Chart.js, GSAP</div></div>
+            <div className="flex my-3 "><div className="">Tailwind CSS, Material-UI, Ant-Design</div></div>
+            <div className="flex my-3 "><div className="">React, Redux, Next.js, Vue.js, Nuxt.js</div></div>
+            <div className="flex my-3 "><div className="">Node/Express, Python/Django/Flask</div></div>
+            <div className="flex my-3 "><div className="">Version Control : Github/GitLab/BitBucket</div></div>
+            <div className="flex my-3 "><div className="">Expertise in QA testing</div></div>
           </div>
         </main>
-        <div id='service-canvas-container'></div>        
+        <div id='service-canvas-container'></div>
         <Header/>
       </>
     );
