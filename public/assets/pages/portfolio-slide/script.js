@@ -57,8 +57,7 @@ class Slider {
     this.scene = null;
     this.clock = null;
     this.camera = null;
-    this.images = [ './bg1.jpg', './bg2.jpg', './bg3.jpg', './bg4.jpg', './bg5.jpg', './bg6.jpg', './bg7.jpg', './bg8.jpg',
-     './bg9.jpg', './bg10.jpg', './bg1.jpg', './bg2.jpg', './bg3.jpg', './bg4.jpg', './bg5.jpg' ];
+    this.images = [ './bg5.jpg', './bg6.jpg', './bg5.jpg', './bg6.jpg', './bg5.jpg', './bg6.jpg', './bg5.jpg', './bg6.jpg', './bg5.jpg', './bg6.jpg', './bg5.jpg', './bg6.jpg', './bg5.jpg', './bg6.jpg', './bg5.jpg' ];
     this.data = { current: 0, next: 1, total: this.images.length - 1, delta: 0 };
     this.state = { animating: false, text: false, initial: true };
     this.textures = null;
