@@ -151,7 +151,7 @@ class Home extends React.Component<{}, {}> {
           </div>
         </main>
         <div id='service-canvas-container'></div>        
-        <Header />
+        <Header/>
       </>
     );
   }

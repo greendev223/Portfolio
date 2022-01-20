@@ -152,11 +152,11 @@ class Home extends React.Component<{}> {
       particles();
 
       const nbTrucs = 1;
-      const nbObjects = isMobile?20:30, objectMinRadius = 0.5, objectRadiusCoef = 1, objectThickness = 0.3, objectDepth = 0.5;
+      const nbObjects = isMobile?22:35, objectMinRadius = 0.5, objectRadiusCoef = 1, objectThickness = 0.3, objectDepth = 0.5;
 
       for (var i = 0; i < nbTrucs; i++) {
         const o3d =new THREE.Object3D();
-        var material = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.6, metalness: 0.5 });      
+        var material = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.3, metalness: 0.9 });      
         for (var i = 0; i < nbObjects; i++) {
           var geometry = triangleGeometry(objectMinRadius + objectRadiusCoef * i, objectThickness, objectDepth);
           var mesh = new THREE.Mesh(geometry, material);      
@@ -173,7 +173,7 @@ class Home extends React.Component<{}> {
         if(isMobile)
           o3d.position.set(0,-10,0)
         else
-          o3d.position.set(40,-10,0)
+          o3d.position.set(35,-5,0)
         scene.add(o3d);
       }
 
@@ -207,11 +207,11 @@ class Home extends React.Component<{}> {
           <div className='w-full h-[100vh] '>
             <div className='w-full md:w-[50%] h-full text-white font-medium flex justify-center items-center'>
               <div>
-                <div className='text-45 p-8 text-center'>Andrey Ershov</div>
-                <div className='text-36 pb-8'>10+ Years of hands-on experience</div>
+                <div className='text-32 md:text-45 p-8 text-center'>Andrey Ershov</div>
+                <div className='text-lg md:text-36 pb-8'>10+ Years of hands-on experience</div>
                 <div className='text-36 p-8 text-center'>
                   <Link href={'/contact'}>
-                    <a className='hover:text-cyan-500 border-4 border-white hover:border-cyan-500 px-6 py-2'>
+                    <a className='text-lg md:text-32 hover:text-cyan-500 border-4 border-white hover:border-cyan-500 px-4 pb-1'>
                       CONTACT
                     </a>
                   </Link>
@@ -220,7 +220,7 @@ class Home extends React.Component<{}> {
             </div>
           </div>
           <div id='index-canvas-container' className='absolute w-full h-full top-0 left-0' style={{zIndex:'-100'}}></div>          
-          <Header />
+          <Header/>
       </>
     );
   }

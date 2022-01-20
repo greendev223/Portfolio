@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import { FaBars } from "react-icons/fa";
 import Image from 'next/image';
 import Menu from '../Menu';
+import Script from 'next/script';
 
 const customStyles = {
   content: {
@@ -15,11 +15,13 @@ const customStyles = {
     // transform: 'translate(-50%, -50%)',
   },
 };
+const activeClass = "text-18 mx-4 hover:cursor-pointer is-active border-white border-dashed"
+const deactiveClass = "text-18 mx-4 hover:cursor-pointer hover:border-b-2 border-white border-dashed"
 
 const Header = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [menubtn, setMenuBTN] = React.useState('block');
-
+  // const [index, setIndex] = React.useState({item})
   function openModal() {
     setIsOpen(true);
     setMenuBTN('none')
@@ -31,24 +33,50 @@ const Header = () => {
   }
   return (
     <>
-    <div 
-      className='absolute top-0 z-10flex justify-between items-center h-[70px] w-full md:mt-4 px-4'
-    >
-      <div className="navbar-nav w-full h-full flex justify-between items-center text-white md:px-4">
-        <Link href="/">
-          <a className="nav-item nav-link flex items-center hover:cursor-pointer">
-            <div className='hidden md:block'><Image src={'/assets/img/portfolio1.png'} alt='logo' width={250} height={50}/></div>
-            <div className='md:hidden'><Image src={'/assets/img/portfolio1.png'} alt='logo' width={150} height={33}/></div>
-          </a>
-        </Link>
-
-        <Link href="#">
-          <a className="nav-item nav-link text-lg md:text-28 hover:cursor-pointer" style={{display:menubtn}} onClick={openModal}>
-              <FaBars/>
-          </a>
-        </Link>
+      <div className='absolute top-0 z-10flex justify-between items-center h-[70px] w-full md:mt-4 px-4'  >
+        <div className="navbar-nav w-full h-full flex justify-between items-center text-white md:px-4">
+          <Link href="/">
+            <a className="nav-item nav-link flex items-center hover:cursor-pointer">
+              <div className='hidden md:block'><Image src={'/assets/img/portfolio1.png'} alt='logo' width={200} height={50}/></div>
+              <div className='md:hidden'><Image src={'/assets/img/portfolio1.png'} alt='logo' width={100} height={25}/></div>
+            </a>
+          </Link>
+          <div className='md:hidden'>
+            <Link href="#">
+              <a className="text-lg md:text-28 hover:cursor-pointer" style={{display:menubtn}} onClick={openModal}>
+                <FaBars/>
+              </a>
+            </Link>
+          </div>
+          <div className='hidden md:block font-normal js-nav'>
+            <Link href="/">
+              <a className={deactiveClass}>
+                Home
+              </a>
+            </Link>
+            <Link href="/about">
+              <a className={deactiveClass}>
+                About
+              </a>
+            </Link>
+            <Link href="/portfolio">
+              <a className={deactiveClass}>
+                Past Work
+              </a>
+            </Link>
+            <Link href="/service">
+              <a className={deactiveClass}>
+                Support
+              </a>
+            </Link>
+            <Link href="/contact">
+              <a className={deactiveClass}>
+                Contact
+              </a>
+            </Link>
+          </div>
+        </div>
       </div>
-    </div>
       <Modal
         isOpen={modalIsOpen}
         // onAfterOpen={afterOpenModal}

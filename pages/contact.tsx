@@ -150,7 +150,7 @@ class Home extends React.Component<{},{}> {
           </div>
         </main>
         <div id='contact-canvas-container' className='absolute w-[100vw] h-[100vh] top-0 left-0' style={{zIndex:'-100'}}></div>        
-        <Header />
+        <Header/>
       </>
     );
   }
