@@ -3,7 +3,7 @@ import Head from 'next/head'
 import * as THREE from "three";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 
-// import Image from 'next/image'
+import Image from 'next/image'
 // import Link from 'next/link';
 // import Script from 'next/script';
 
@@ -104,12 +104,37 @@ class About extends React.Component<Props, ContactState> {
           <link rel="icon" href="/favicon.png" />
         </Head>
         <main className='flex items-center justify-center w-[100vw] h-[100vh] cursor-default absolute top-0 left-0 p-4'>
-          <div className='text-white text-20 md:text-36 font-medium md:p-28'>
-            &nbsp;&nbsp;I&apos;m Andrey from Russia and have 10+ years of hands-on experience.<br/>
-            &nbsp;&nbsp;I got my Bachelor of Computer Science in 2011 and I&apos;ve been working as a professional software developer since 2012. During that time, I learned and experienced related technologies and improved myself and accumulated strong skills and a wealth of experience in my skill field.<br/>
-            &nbsp;&nbsp;Have experience in Web and Mobiel UI from concept through deployment and worked on lots of small and large scale projects.<br/>
-            &nbsp;&nbsp;I am honest and hardworking and always like new technology and challenge.<br/>
-            &nbsp;&nbsp;I prefer to build trust and a long-term relationships.<br/>
+          <div>
+            <div className='text-28 md:text-36 text-center pt-4 pb-8 font-semibold text-white'>Who&nbsp;&nbsp;&nbsp;am&nbsp;&nbsp;&nbsp;I</div>
+            <div className='h-8 hidden md:block'></div>
+            <div className='grid grid-cols-1 md:grid-cols-2'>
+              <div className='hidden md:block '>
+                <div className='w-full h-full md:pl-20 flex items-center justify-center'>              
+                  <Image src={'/assets/img/developer.png'} width={500} height={500} alt='about me'/>
+                </div>
+              </div>
+              <div className='w-full h-full flex items-center justify-center md:pr-20'>
+                <div className='text-white text-sm md:text-lg font-medium '>
+                  <div className='text-18 md:text-xl mb-1'>Hi there</div>
+                  My name is Andrey and I&apos;m a Skilled Professional Developer.<br/>
+                  I have been working in web and mobile development for over 10 years.<br/>
+                  My projects include building UI for web and mobile, web 3D animation, backend implementation, 3rd party API integration, web crawling, and more.<br/><br/>
+                  
+                  The things I love:<br/>
+                  &nbsp;&nbsp;- Learning and using new skills<br/>
+                  &nbsp;&nbsp;- JavaScript, TypeScript, Web 3D animation<br/>
+                  &nbsp;&nbsp;- Build Trust and build Long-Term Relationship<br/>
+                  &nbsp;&nbsp;- Movies, games, billiards, gardening<br/><br/>
+
+                  The things I hate:<br/>
+                  &nbsp;&nbsp;- Social Networks<br/>
+                  &nbsp;&nbsp;- Dirty Code<br/>
+                  &nbsp;&nbsp;- Stop a Task without completing<br/><br/>
+
+                  I am always ready to start new a project, so feel free to call me.<br/>
+                </div>
+              </div>
+            </div>
           </div>
         </main>
         

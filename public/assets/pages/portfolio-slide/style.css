@@ -169,16 +169,16 @@ ul, li {
 .slider-bullet {
   display: flex;
   align-items: center;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 .slider-bullet__text {
   color: #fff;
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   margin-right: 1rem;
 }
 .slider-bullet__line {
   background-color: #fff;
-  height: 1px;
+  height: 2px;
   width: 1rem;
 }
 .slider canvas {
