@@ -3,7 +3,7 @@ import 'tailwindcss/tailwind.css'
 import type { AppProps } from 'next/app'
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Loading from '../components/Loading';
+import PageLoading from '../components/PageLoading';
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       {
-        loading?<Loading/>:<Component {...pageProps} />
+        loading?<PageLoading/>:<Component {...pageProps} />
       }      
     </>
   )
