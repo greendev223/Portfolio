@@ -104,15 +104,14 @@ class About extends React.Component<{}> {
                   My projects include building UI for web and mobile, web 3D animation, backend implementation, 3rd party API integration, web crawling, and more.<br/><br/>
                   
                   The things I love:<br/>
-                  &nbsp;&nbsp;- Learning and using new skills<br/>
+                  &nbsp;&nbsp;- Learning New Skill, Improve MYSELF<br/>
                   &nbsp;&nbsp;- JavaScript, TypeScript, Python, Web 3D animation<br/>
-                  &nbsp;&nbsp;- Build Trust and build Long-Term Relationship<br/>
-                  &nbsp;&nbsp;- Movies, games, billiards, gardening<br/><br/>
+                  &nbsp;&nbsp;- Build Trust and Build Long-Term Relationship<br/>
+                  &nbsp;&nbsp;- Movies, Games, Billiards, Gardening<br/><br/>
                   
                   The things I hate:<br/>
-                  &nbsp;&nbsp;- Social Networks<br/>
                   &nbsp;&nbsp;- Dirty Code<br/>
-                  &nbsp;&nbsp;- Stopping Task without completing<br/><br/>
+                  &nbsp;&nbsp;- Stopping Task Without Completing<br/><br/>
 
                   I am always ready to start new a project, so feel free to ping me.<br/>
                 </div>
