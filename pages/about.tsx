@@ -1,22 +1,11 @@
 import React from 'react';
 import Head from 'next/head'
 import * as THREE from "three";
-import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
-
-import Image from 'next/image'
-// import Link from 'next/link';
-// import Script from 'next/script';
 
 import Header from '../components/header/Header';
 import Developer from "../components/Developer"
 
-type Props = {  
-}
-
-type ContactState = {
-}
-
-class About extends React.Component<Props, ContactState> { 
+class About extends React.Component<{}> { 
   componentDidMount(){
     let container:any;    
     let scene = new THREE.Scene();
