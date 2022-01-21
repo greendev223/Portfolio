@@ -20,7 +20,6 @@ const deactiveClass = "text-18 mx-4 hover:cursor-pointer hover:border-b-2 border
 const Header = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [menubtn, setMenuBTN] = React.useState('block');
-  // const [index, setIndex] = React.useState({item})
   function openModal() {
     setIsOpen(true);
     setMenuBTN('none')
@@ -36,8 +35,7 @@ const Header = () => {
         <div className="navbar-nav w-full h-full flex justify-between items-center text-white md:px-4">
           <Link href="/">
             <a className="nav-item nav-link flex items-center hover:cursor-pointer">
-              <div className='hidden md:block'><Image src={'/assets/img/eye.png'} alt='logo' width={90} height={50}/></div>
-              <div className='md:hidden'><Image src={'/assets/img/eye.png'} alt='logo' width={70} height={30}/></div>
+              <div className=''><Image src={'/assets/img/eye.png'} alt='logo' width={60} height={35}/></div>              
             </a>
           </Link>
           <div className='md:hidden'>
