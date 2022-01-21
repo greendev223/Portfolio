@@ -3,7 +3,7 @@ import Image from "next/image"
 const Developer = () => {
   return (
     <>
-      <Image src={'/assets/img/developer.png'} width={500} height={500} alt='image' placeholder="blur" blurDataURL="data:image/png;base64,[IMAGE_CODE_FROM_PNG_PIXEL]"/>
+      <Image src={'/assets/img/developer.png'} width={550} height={550} alt='image' placeholder="blur" blurDataURL="data:image/png;base64,[IMAGE_CODE_FROM_PNG_PIXEL]"/>
     </>
   )
 }

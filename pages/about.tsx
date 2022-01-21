@@ -61,7 +61,7 @@ class About extends React.Component<{}> {
       requestAnimationFrame(draw);
       let time = Date.now() * 0.005;
       cubes.forEach((cube, index) => {
-        cube.rotation.z -= 0.007;
+        cube.rotation.z -= 0.005;
         cube.position.set(0, 0, -7 + index*0.04 );    
       });
       
@@ -89,8 +89,6 @@ class About extends React.Component<{}> {
         </Head>
         <main className='flex items-center justify-center w-[100vw] h-[100vh] cursor-default absolute top-0 left-0 p-4'>
           <div>
-            <div className='text-28 md:text-36 text-center pt-4 pb-8 font-semibold text-white'>Who&nbsp;&nbsp;&nbsp;am&nbsp;&nbsp;&nbsp;I</div>
-            <div className='h-8 hidden md:block'></div>
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='hidden md:block '>
                 <div className='w-full h-full md:pl-20 flex items-center justify-center'>              
@@ -98,7 +96,8 @@ class About extends React.Component<{}> {
                 </div>
               </div>
               <div className='w-full h-full flex items-center justify-center md:pr-20'>
-                <div className='text-white text-sm md:text-lg font-medium '>
+                <div className='text-white text-12 md:text-lg font-medium '>
+                  <div className='text-28 md:text-36 pt-4 pb-6 font-semibold text-white'>Who am I?</div>
                   <div className='text-18 md:text-xl mb-1'>Hi there</div>
                   My name is Andrey and I&apos;m a Skilled Professional Developer.<br/>
                   I have been working in web and mobile development for over 10 years.<br/>
@@ -106,16 +105,16 @@ class About extends React.Component<{}> {
                   
                   The things I love:<br/>
                   &nbsp;&nbsp;- Learning and using new skills<br/>
-                  &nbsp;&nbsp;- JavaScript, TypeScript, Web 3D animation<br/>
+                  &nbsp;&nbsp;- JavaScript, TypeScript, Python, Web 3D animation<br/>
                   &nbsp;&nbsp;- Build Trust and build Long-Term Relationship<br/>
                   &nbsp;&nbsp;- Movies, games, billiards, gardening<br/><br/>
-
+                  
                   The things I hate:<br/>
                   &nbsp;&nbsp;- Social Networks<br/>
                   &nbsp;&nbsp;- Dirty Code<br/>
-                  &nbsp;&nbsp;- Stop a Task without completing<br/><br/>
+                  &nbsp;&nbsp;- Stopping Task without completing<br/><br/>
 
-                  I am always ready to start new a project, so feel free to call me.<br/>
+                  I am always ready to start new a project, so feel free to ping me.<br/>
                 </div>
               </div>
             </div>

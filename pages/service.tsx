@@ -133,28 +133,28 @@ class Home extends React.Component<{}, {}> {
         </Head>
         
         <main className='flex items-center justify-center w-[100vw] h-[100vh] cursor-default absolute top-0 left-0 p-4'>
-          <div className='w-full'>
-            <div className='text-28 md:text-36 text-center pt-4 pb-8 font-semibold text-white'>Technical Support</div>
-            <div className='h-8 hidden md:block'></div>
+          <div className='w-full'>                        
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='hidden md:block '>
-                <div className='w-full h-full md:pl-20 flex items-center justify-center'>              
+                <div className='w-full h-full md:pl-24 flex items-center justify-center'>              
                   <Developer/>
                 </div>
               </div>
-              <div className='w-full h-full flex items-center justify-center md:pr-20'>
+              <div className='w-full h-full flex items-center justify-center md:pr-24'>
                 <div className='text-white text-sm md:text-lg font-medium'>
-                  <div className='mt-3 mb-4'>Pixel-Perfect/Mobile Responsive Web UI</div>
-                  <div className='mt-3 mb-4'>Mobile App UI</div>
-                  <div className='mt-3 mb-4'>HTML, HTML5, CSS, SCSS</div>
-                  <div className='mt-3 mb-4'>JavaScript, TypeScript, JQuery</div>
-                  <div className='mt-3 mb-4'>Canvas, SVG, WebGL, Three.js, Chart.js, GSAP</div>
-                  <div className='mt-3 mb-4'>Tailwind CSS, Material-UI, Ant-Design</div>
-                  <div className='mt-3 mb-4'>React, Redux, Next.js, Vue.js, Nuxt.js</div>
-                  <div className='mt-3 mb-4'>Node/Express, Python/Django/Flask</div>
-                  <div className='mt-3 mb-4'>Web Scraping and Crawling, Automation</div>
-                  <div className='mt-3 mb-4'>Version Control : Github/GitLab/BitBucket</div>
-                  <div className='mt-3 mb-4'>QA testing</div>
+                  <div className='text-28 md:text-36 pt-4 pb-8 font-semibold text-white'>Technical Support</div>
+                  <div className='my-3 '>- Pixel-Perfect/Mobile Responsive Web UI</div>
+                  <div className='my-3 '>- Mobile App UI</div>
+                  <div className='my-3 '>- HTML, HTML5, CSS, SCSS</div>
+                  <div className='my-3 '>- JavaScript, TypeScript, JQuery</div>
+                  <div className='my-3 '>- Canvas, SVG, WebGL, Three.js, Chart.js, GSAP</div>
+                  <div className='my-3 '>- Tailwind CSS, Material-UI, Ant-Design</div>
+                  <div className='my-3 '>- React, Redux, Next.js, Vue.js, Nuxt.js</div>
+                  <div className='my-3 '>- Node/Express, Python/Django/Flask</div>
+                  <div className='my-3 '>- BlockChain</div>
+                  <div className='my-3 '>- Web Scraping and Crawling, Automation</div>
+                  <div className='my-3 '>- Version Control : Github/GitLab/BitBucket</div>
+                  <div className='my-3 '>- QA testing</div>
                 </div>
               </div>
             </div>

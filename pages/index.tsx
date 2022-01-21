@@ -173,7 +173,7 @@ class Home extends React.Component<{}> {
         if(isMobile)
           o3d.position.set(0,-10,0)
         else
-          o3d.position.set(35,-5,0)
+          o3d.position.set(35,-10,0)
         scene.add(o3d);
       }
 
