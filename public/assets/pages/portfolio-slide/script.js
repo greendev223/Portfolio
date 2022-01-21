@@ -98,7 +98,8 @@ class Slider {
     this.clock = new THREE.Clock(true);
     this.renderer = new THREE.WebGLRenderer({ alpha: true });
     this.renderer.setPixelRatio(window.devicePixelRatio);
-    this.renderer.setSize(this.el.offsetWidth, this.el.offsetHeight);
+    this.renderer.setClearColor(0x000000, 1);
+    this.renderer.setSize(this.el.offsetWidth, this.el.offsetHeight);    
     this.inner.appendChild(this.renderer.domElement);
   }
 
