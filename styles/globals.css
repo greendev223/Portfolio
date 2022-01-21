@@ -1,10 +1,17 @@
+@font-face {
+  font-family: "roboto";
+  src: local("roboto-v29-latin-regular"),
+   url("/assets/fonts/roboto-v29-latin-regular.ttf") format("truetype");
+  font-weight: bold;
+}
 html,
 body {
   padding: 0;
   margin: 0;
   overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* font-family: roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  font-family: 'roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .ReactModal__Overlay--after-open{
   background-color: transparent !important;
