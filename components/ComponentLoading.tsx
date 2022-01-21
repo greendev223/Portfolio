@@ -3,7 +3,7 @@
 
 const ComponentLoading = () => {
   return (
-    <div className="w-[100vw] h-[100vh] flex items-center justify-center bg-gray-300 ">
+    <div className="flex items-center justify-center ">
       <div className='text-45 text-indigo-600 font-medium'>
         {/* <CircularProgressbar value={66} /> */}
         Loading...

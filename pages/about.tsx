@@ -12,7 +12,6 @@ class About extends React.Component<{}> {
     let camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 1000);
     // camera.position.set(0,30,30)
     let envMapURLs = ['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg'];
-    // let envMapURLs = ['night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg', 'night-nature.jpg'];    
     
     let reflectionCube = new THREE.CubeTextureLoader().
     setCrossOrigin('').
