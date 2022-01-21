@@ -61,7 +61,7 @@ class About extends React.Component<{}> {
       requestAnimationFrame(draw);
       let time = Date.now() * 0.005;
       cubes.forEach((cube, index) => {
-        cube.rotation.z -= 0.005;
+        cube.rotation.z -= 0.004;
         cube.position.set(0, 0, -7 + index*0.04 );    
       });
       
@@ -98,21 +98,21 @@ class About extends React.Component<{}> {
               <div className='w-full h-full flex items-center justify-center md:pr-20'>
                 <div className='text-white text-12 md:text-lg font-medium '>
                   <div className='text-28 md:text-36 pt-4 pb-6 font-semibold text-white'>Who am I?</div>
-                  <div className='text-18 md:text-xl mb-1'>Hi there</div>
+                  <div className='text-18 md:text-22 mb-1'>Hi there</div>
                   My name is Andrey and I&apos;m a Skilled Professional Developer.<br/>
-                  I have been working in web and mobile development for over 10 years.<br/>
-                  My projects include building UI for web and mobile, web 3D animation, backend implementation, 3rd party API integration, web crawling, and more.<br/><br/>
-                  
+                  I have been working in web and mobile development for 10+ years.<br/>
+                  My projects include building UI for web and mobile, web 3D animation, backend implementation, 3rd party API integration, web crawling, and more.<br/>
+                  <div className='h-3'></div>
                   The things I love:<br/>
                   &nbsp;&nbsp;- Learning New Skill, Improve MYSELF<br/>
                   &nbsp;&nbsp;- JavaScript, TypeScript, Python, Web 3D animation<br/>
                   &nbsp;&nbsp;- Build Trust and Build Long-Term Relationship<br/>
-                  &nbsp;&nbsp;- Movies, Games, Billiards, Gardening<br/><br/>
-                  
+                  &nbsp;&nbsp;- Movies, Games, Billiards, Gardening<br/>
+                  <div className='h-3'></div>
                   The things I hate:<br/>
                   &nbsp;&nbsp;- Dirty Code<br/>
-                  &nbsp;&nbsp;- Stopping Task Without Completing<br/><br/>
-
+                  &nbsp;&nbsp;- Stopping Task Without Completing<br/>
+                  <div className='h-3'></div>
                   I am always ready to start new a project, so feel free to ping me.<br/>
                 </div>
               </div>
