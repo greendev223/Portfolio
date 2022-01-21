@@ -8,6 +8,7 @@ import Image from 'next/image'
 // import Script from 'next/script';
 
 import Header from '../components/header/Header';
+import Developer from "../components/Developer"
 
 type Props = {  
 }
@@ -16,11 +17,6 @@ type ContactState = {
 }
 
 class About extends React.Component<Props, ContactState> { 
-  // constructor(props:Props) {
-  //   super(props)
-  // }
-  // state: ContactState = {};  
-  
   componentDidMount(){
     let container:any;    
     let scene = new THREE.Scene();
@@ -110,7 +106,7 @@ class About extends React.Component<Props, ContactState> {
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='hidden md:block '>
                 <div className='w-full h-full md:pl-20 flex items-center justify-center'>              
-                  <Image src={'/assets/img/developer.png'} width={500} height={500} alt='about me'/>
+                  <Developer/>
                 </div>
               </div>
               <div className='w-full h-full flex items-center justify-center md:pr-20'>

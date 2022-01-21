@@ -4,6 +4,7 @@ import Image from 'next/image';
 import * as THREE from "three";
 
 import Header from '../components/header/Header';
+import Developer from '../components/Developer';
 
 class Home extends React.Component<{}, {}> {   
   componentDidMount(){
@@ -138,7 +139,7 @@ class Home extends React.Component<{}, {}> {
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='hidden md:block '>
                 <div className='w-full h-full md:pl-20 flex items-center justify-center'>              
-                  <Image src={'/assets/img/developer.png'} width={500} height={500} alt='about me'/>
+                  <Developer/>
                 </div>
               </div>
               <div className='w-full h-full flex items-center justify-center md:pr-20'>
