@@ -185,7 +185,7 @@ class Home extends React.Component<{},{}> {
                 <div className='mt-20'>
                   <div>LET&apos;S BE FRIENDS!</div>                
                   <div className='text-white text-xl md:text-45 font-medium mt-2 flex justify-between items-center'>
-                    <Link href={'https://join.skype.com/invite/xZi9LkzgQzuG'}>
+                    <Link href={'https://join.skype.com/invite/I0SO9yjWxnGU'}>
                       <a target={'_blank'} className='hover:text-amber-500'>
                         <FaSkype/>
                       </a>
