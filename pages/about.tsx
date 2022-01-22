@@ -113,7 +113,7 @@ class About extends React.Component<{}> {
                   &nbsp;&nbsp;- Dirty Code<br/>
                   &nbsp;&nbsp;- Stopping Task Without Completing<br/>
                   <div className='h-3'></div>
-                  I am always ready to start new a project, so feel free to ping me.<br/>
+                  I am ready to start a new project, so feel free to ping me.<br/>
                 </div>
               </div>
             </div>

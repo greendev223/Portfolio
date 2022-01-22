@@ -141,20 +141,20 @@ class Home extends React.Component<{}, {}> {
               </div>
               <div className='w-full h-full flex items-center justify-center md:pr-24'>
                 <div className='text-white text-sm md:text-lg font-medium'>
-                  <div className='text-28 md:text-36 pt-4 pb-6 font-semibold text-white'>Technical Support</div>
-                  <div className='my-2'>- Pixel-Perfect/Mobile Responsive Web UI</div>
-                  <div className='my-2'>- Mobile App UI</div>
-                  <div className='my-2'>- HTML, HTML5, CSS, SCSS</div>
-                  <div className='my-2'>- JavaScript, TypeScript, JQuery</div>
-                  <div className='my-2'>- Canvas, SVG, WebGL, Three.js, Chart.js, GSAP</div>
-                  <div className='my-2'>- Tailwind CSS, Material-UI, Ant-Design</div>
-                  <div className='my-2'>- React, Redux, Next.js, Vue.js, Nuxt.js</div>
-                  <div className='my-2'>- Node/Express, Python/Django/Flask</div>
-                  <div className='my-2'>- BlockChain</div>
-                  <div className='my-2'>- Web Scraping and Crawling, Automation</div>
-                  <div className='my-2'>- Version Control : Github/GitLab/BitBucket</div>
-                  <div className='my-2'>- QA testing</div>
-                  <div className='mt-6 text-base md:text-22'>Hourly Rate: <b className='text-orange-300 font-semibold'>$15~35</b> depending on difficulty</div>
+                  <div className='text-28 md:text-36 pt-4 pb-6 font-semibold text-center md:text-left'>Technical Support</div>
+                  <div className='my-1'>- Pixel-Perfect/Mobile Responsive Web UI</div>
+                  <div className='my-1'>- Mobile App UI</div>
+                  <div className='my-1'>- HTML, HTML5, CSS, SCSS</div>
+                  <div className='my-1'>- JavaScript, TypeScript, JQuery</div>
+                  <div className='my-1'>- Canvas, SVG, WebGL, Three.js, Chart.js, GSAP</div>
+                  <div className='my-1'>- Tailwind CSS, Material-UI, Ant-Design</div>
+                  <div className='my-1'>- React, Redux, Next.js, Vue.js, Nuxt.js</div>
+                  <div className='my-1'>- Node/Express, Python/Django/Flask</div>
+                  <div className='my-1'>- BlockChain</div>
+                  <div className='my-1'>- Web Scraping and Crawling, Automation</div>
+                  <div className='my-1'>- Version Control : Github/GitLab/BitBucket</div>
+                  <div className='my-1'>- QA testing</div>
+                  <div className='mt-4 text-base md:text-22'>Hourly Rate: <b className='text-green-400 font-semibold'>$15~35</b> depending on difficulty</div>
                 </div>
               </div>
             </div>

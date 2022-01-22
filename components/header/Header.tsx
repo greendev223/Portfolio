@@ -31,7 +31,7 @@ const Header = () => {
   }
   return (
     <>
-      <div className='absolute top-0 z-10flex justify-between items-center h-[70px] w-full md:mt-4 px-4'  >
+      <div className='absolute top-0 flex justify-between items-center h-[40px] w-full mt-4 px-4'  >
         <div className="navbar-nav w-full h-full flex justify-between items-center text-white md:px-4">
           <Link href="/">
             <a className="nav-item nav-link flex items-center hover:cursor-pointer">
