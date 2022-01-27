@@ -113,9 +113,7 @@ class Slider {
       texture.minFilter = THREE.LinearFilter;
       texture.generateMipmaps = false;
       if (index === 0 && this.mat) {
-        this.mat.uniforms.size.value = [
-        texture.image.naturalWidth,
-        texture.image.naturalHeight];
+        this.mat.uniforms.size.value = [ texture.image.naturalWidth,  texture.image.naturalHeight];
       }
       this.textures.push(texture);
     });
