@@ -17,7 +17,7 @@ class Home extends React.Component<{},{}> {
   componentDidMount(){
 
     let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer;
-    let container:any, controls: OrbitControls, earth:THREE.Object3D;
+    let container:any, controls: OrbitControls, earth:THREE.Object3D, cube:THREE.Object3D;
     let group = new Array();
     let winWidth: number, winHeight: number;
 
@@ -73,7 +73,7 @@ class Home extends React.Component<{},{}> {
         new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: loader.load('assets/img/landing-page/nz.jpg')}),
       ];
       loadManager.onLoad = () => {
-        const cube = new THREE.Mesh(cubegeometry, materials);
+        cube = new THREE.Mesh(cubegeometry, materials);
         scene.add(cube);
       };     
       loadManager.onProgress = (urlOfLastItemLoaded, itemsLoaded, itemsTotal) => {
@@ -132,6 +132,7 @@ class Home extends React.Component<{},{}> {
     function animate(){
       requestAnimationFrame(animate);
       if(earth) earth.rotateY(0.005)
+      if(cube) cube.rotateY(0.002)
       var i = 2000;
       while(i--){        
         if(group[i].position.y < -500){
