@@ -201,7 +201,7 @@ class Home extends React.Component<{},{}> {
                         <FaDiscord/>
                       </a>
                     </Link>
-                    <Link href={'https://t.me/WebDevNinja'}>
+                    <Link href={'https://t.me/silverstarking'}>
                       <a target={'_blank'} className='hover:text-amber-500'>
                         <FaTelegram/>
                       </a>
