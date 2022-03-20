@@ -10,7 +10,7 @@ import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 import Header from '../components/header/Header';
 
 const sendEmail = () => {    
-  window.open("mailto:darkrut22@gmail.com?subject=Contact");
+  window.open("mailto:green.dev.223@gmail.com?subject=Contact");
 };
 class Home extends React.Component<{},{}> { 
   
@@ -178,7 +178,7 @@ class Home extends React.Component<{},{}> {
                   <div className='text-lg md:text-36 font-medium'>
                     <Link href={'#'}>
                       <a className='hover:text-amber-500' onClick={()=>sendEmail()}>
-                        <div className=''>darkrut22@gmail.com</div>                
+                        <div className=''>green.dev.223@gmail.com</div>                
                       </a>
                     </Link>
                 </div>
@@ -186,22 +186,22 @@ class Home extends React.Component<{},{}> {
                 <div className='mt-20'>
                   <div>LET&apos;S BE FRIENDS!</div>                
                   <div className='text-white text-xl md:text-45 font-medium mt-2 flex justify-between items-center'>
-                    <Link href={'https://join.skype.com/invite/I0SO9yjWxnGU'}>
+                    <Link href={'https://join.skype.com/invite/AoH6D6oXHFW6'}>
                       <a target={'_blank'} className='hover:text-amber-500'>
                         <FaSkype/>
                       </a>
                     </Link>
-                    <Link href={'https://github.com/perfectdev000'}>
+                    <Link href={'https://github.com/greendev223'}>
                       <a target={'_blank'} className='hover:text-amber-500'>
                         <FaGithub/>
                       </a>
                     </Link>
-                    <Link href={'https://discord.gg/YgNKvera'}>
+                    {/* <Link href={'https://discord.gg/YgNKvera'}>
                       <a target={'_blank'} className='hover:text-amber-500'>
                         <FaDiscord/>
                       </a>
-                    </Link>
-                    <Link href={'https://t.me/silverstarking'}>
+                    </Link> */}
+                    <Link href={'https://t.me/Greentry'}>
                       <a target={'_blank'} className='hover:text-amber-500'>
                         <FaTelegram/>
                       </a>

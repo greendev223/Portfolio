@@ -150,11 +150,11 @@ class Home extends React.Component<{}, {}> {
                   <div className='my-1'>- Tailwind CSS, Material-UI, Ant-Design</div>
                   <div className='my-1'>- React, Redux, Next.js, Vue.js, Nuxt.js</div>
                   <div className='my-1'>- Node/Express, Python/Django/Flask</div>
-                  <div className='my-1'>- BlockChain</div>
+                  <div className='my-1'>- BlockChain/Smart contract/C#.NET</div>
                   <div className='my-1'>- Web Scraping and Crawling, Automation</div>
                   <div className='my-1'>- Version Control : Github/GitLab/BitBucket</div>
                   <div className='my-1'>- QA testing</div>
-                  <div className='mt-4 text-base md:text-22'>Hourly Rate: <b className='text-green-400 font-semibold'>$15~35</b> depending on difficulty</div>
+                  <div className='mt-4 text-base md:text-22'>Hourly Rate: <b className='text-green-400 font-semibold'>$20~50</b> depending on difficulty</div>
                 </div>
               </div>
             </div>
