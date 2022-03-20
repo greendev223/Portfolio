@@ -191,11 +191,11 @@ class Home extends React.Component<{},{}> {
                         <FaSkype/>
                       </a>
                     </Link>
-                    <Link href={'https://github.com/greendev223'}>
+                    {/* <Link href={'https://github.com/greendev223'}>
                       <a target={'_blank'} className='hover:text-amber-500'>
                         <FaGithub/>
                       </a>
-                    </Link>
+                    </Link> */}
                     {/* <Link href={'https://discord.gg/YgNKvera'}>
                       <a target={'_blank'} className='hover:text-amber-500'>
                         <FaDiscord/>
