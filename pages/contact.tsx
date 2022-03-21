@@ -186,7 +186,7 @@ class Home extends React.Component<{},{}> {
                 <div className='mt-20'>
                   <div>LET&apos;S BE FRIENDS!</div>                
                   <div className='text-white text-xl md:text-45 font-medium mt-2 flex justify-between items-center'>
-                    <Link href={'https://join.skype.com/invite/'}>
+                    <Link href={'https://join.skype.com/invite/AoH6D6oXHFW6'}>
                       <a target={'_blank'} className='hover:text-amber-500'>
                         <FaSkype/>
                       </a>
@@ -196,11 +196,11 @@ class Home extends React.Component<{},{}> {
                         <FaGithub/>
                       </a>
                     </Link> */}
-                    <Link href={'https://discord.gg/YgNKvera'}>
+                    {/* <Link href={'https://discord.gg/YgNKvera'}>
                       <a target={'_blank'} className='hover:text-amber-500'>
                         <FaDiscord/>
                       </a>
-                    </Link>
+                    </Link> */}
                     <Link href={'https://t.me/Greentry'}>
                       <a target={'_blank'} className='hover:text-amber-500'>
                         <FaTelegram/>
