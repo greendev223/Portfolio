@@ -178,7 +178,7 @@ class Home extends React.Component<{},{}> {
                   <div className='text-lg md:text-36 font-medium'>
                     <Link href={'#'}>
                       <a className='hover:text-amber-500' onClick={()=>sendEmail()}>
-                        <div className=''>green.dev.223@gmail.com</div>                
+                        <div className=''>troy.dev.223@gmail.com</div>                
                       </a>
                     </Link>
                 </div>
@@ -191,11 +191,11 @@ class Home extends React.Component<{},{}> {
                         <FaSkype/>
                       </a>
                     </Link>
-                    {/* <Link href={'https://github.com/greendev223'}>
+                    <Link href={'https://github.com/perfectdev000'}>
                       <a target={'_blank'} className='hover:text-amber-500'>
                         <FaGithub/>
                       </a>
-                    </Link> */}
+                    </Link>
                     {/* <Link href={'https://discord.gg/YgNKvera'}>
                       <a target={'_blank'} className='hover:text-amber-500'>
                         <FaDiscord/>
